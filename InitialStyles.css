@@ -1,0 +1,143 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #e0e7f1;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+
+main {
+  max-width: 1000px;
+  margin: 50px auto;
+  background-color: #fafdfe;
+  padding: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+table {
+  width: 100%;
+  height: auto;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+thead {
+  text-align: left;
+}
+
+.users-list__user-row {
+  border: 1px solid transparent;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+}
+
+.users-list__user-row-divider {
+  height: 15px;
+  width: 100%;
+  background-color: rebeccapurple;
+}
+
+.users-list__user-info {
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+}
+
+.users-list__user-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.users-list__user-name {
+  margin: 0;
+  padding: 0;
+}
+
+.user-status--active::before {
+  display: inline-block;
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: green;
+}
+
+.user-status--inactive::before {
+  display: inline-block;
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.users-list__user-contact-btn {
+  background-color: #037df4;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+.users-list__user-contact-btn:hover {
+  background-color: lightblue;
+  color: #037df4;
+  cursor: pointer;
+}
+
+.users-list__user-actions {
+  position: relative;
+}
+
+.users-list__user-actions ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: none;
+  position: absolute;
+  left: 20px;
+  top: -10px;
+}
+
+.users-list__user-actions ul li:first-child button {
+  background-color: lightblue;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.users-list__user-actions ul li:last-child button {
+  background-color: lightpink;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.users-list__user-actions-list-item button {
+  width: 50px;
+}
+
+.users-list__user-actions-list-item button:hover {
+  scale: 1.2;
+  transition: 100ms;
+  color: white;
+}
+
+.users-list__user-actions-btn {
+  transform: rotate(270deg);
+  font-weight: bold;
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.users-list__user-actions-btn:hover {
+  scale: 1.5;
+  transition: 100ms;
+  color: #037df4;
+}
+
+.users-list__user-actions-btn:focus + ul {
+  display: block;
+}

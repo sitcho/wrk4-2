@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="InitialStyles.css" />
+    <style>
+      /*
+            შეავსეთ სტილები აქ
+        */
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Users</h1>
+      <table>
+        <thead>
+          <tr class="heading">
+            <th class="heading__item">User</th>
+            <th class="heading__item">Status</th>
+            <th class="heading__item">Location</th>
+            <th class="heading__item">Phone</th>
+            <th class="heading__item">Contact</th>
+            <th class="heading__item">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="usersList" class="users-list"></tbody>
+      </table>
+    </main>
+
+    <script>
+      const usersList = document.querySelector("#usersList");
+      const locations = [
+        "Tbilisi",
+        "Batumi",
+        "Kutaisi",
+        "Rustavi",
+        "Gori",
+        "Poti",
+        "Zugdidi",
+        "Telavi",
+        "Khashuri",
+        "Borjomi",
+        "Kobuleti",
+        "Marneuli",
+        "Akhaltsikhe",
+        "Tsqaltubo",
+        "Kaspi",
+      ];
+
+      const names = [
+        "Giorgi",
+        "Nika",
+        "Luka",
+        "Saba",
+        "Tornike",
+        "Irakli",
+        "Levan",
+        "Davit",
+        "Ana",
+        "Mari",
+        "Nino",
+        "Tamar",
+        "Salome",
+        "Ketevan",
+      ];
+
+      const lastnames = [
+        "Kapanadze",
+        "Kakushadze",
+        "Kalandadze",
+        "Kalandarishvili",
+        "Kalandia",
+        "Azarashvili",
+        "Azariashvili",
+        "Baramidze",
+        "Baramia",
+        "Nebieridze",
+        "Sharashidze",
+        "Sharashia",
+      ];
+
+      const indexes = [
+        "577",
+        "555",
+        "514",
+        "593",
+        "591",
+        "599",
+        "568",
+        "551",
+        "558",
+        "557",
+      ];
+
+      const users = new Array(10).fill(0).map((_, i) => {
+        return {
+          name: `${names[Math.floor(Math.random() * names.length)]} ${
+            lastnames[Math.floor(Math.random() * lastnames.length)]
+          }`,
+          status: Math.random() > 0.5 ? "Active" : "Inactive",
+          location: locations[Math.floor(Math.random() * locations.length)],
+          phone: `+995 ${
+            indexes[Math.floor(Math.random() * indexes.length)]
+          } ${Math.floor(Math.random() * 1000000)}`,
+        };
+      });
+
+      users.forEach((user) => {
+        const tr = document.createElement("tr");
+        tr.classList.add("users-list__user-row");
+        tr.innerHTML = `
+        <td class="users-list__user-column">
+            <div class="users-list__user-info">
+                <img src="https://i.pickadummy.com/300x100" alt="${
+                  user.name
+                } image" class="users-list__user-image">
+                <div class="users-list__user-name-container">
+                    <h4 class="users-list__user-name">${user.name}</h4>
+                    <span class="users-list__user-nickname">@${user.name
+                      .split(" ")
+                      .map((p) => p.toLowerCase())
+                      .join("_")}</span>
+                </div>
+            </div>
+        </td>
+        <td class="users-list__user-column">
+            <span class="user-status user-status--${user.status.toLowerCase()}">
+                ${user.status}
+            </span>
+        </td>
+        <td class="users-list__user-column">
+            ${user.location}
+        </td>
+        <td class="users-list__user-column">
+            <a class="users-list__user-phone" href="tel:${user.phone}">
+                ${user.phone}
+            </a>
+        </td>
+        <td class="users-list__user-column">
+            <button class="users-list__user-contact-btn">
+                Contact
+            </button>
+        </td>
+        <td class="users-list__user-column">
+            <div class="users-list__user-actions">
+                <button class="users-list__user-actions-btn">
+                    ...
+                </button>
+                <ul class="users-list__user-actions-list">
+                    <li class="users-list__user-actions-list-item"><button>Edit</button></li>
+                    <li class="users-list__user-actions-list-item"><button>Delete</button></li>
+                </ul>
+            </div>
+        </td>
+        `;
+        usersList.appendChild(tr);
+      });
+    </script>
+  </body>
+</html>
